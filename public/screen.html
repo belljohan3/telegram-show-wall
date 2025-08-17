@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ambiance Screen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+      /* Container 16:9 */
+      .ratio-16-9 {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* Image pleine zone, cover */
+      .slide {
+        position: absolute;
+        inset: 0;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease;
+      }
+      .slide.visible {
+        opacity: 1;
+      }
+      .caption {
+        position: absolute;
+        left: 2rem;
+        right: 2rem;
+        bottom: 2rem;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(2px);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white">
+    <div class="ratio-16-9">
+      <img id="slideA" class="slide" alt="slide A" />
+      <img id="slideB" class="slide" alt="slide B" />
+      <div id="caption" class="caption hidden"></div>
+    </div>
+    <script src="/client.js" type="module"></script>
+  </body>
+</html>
